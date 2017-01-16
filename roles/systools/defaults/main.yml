@@ -6,6 +6,9 @@ sys_packages:
   - git
   - zsh
   - phpunit
+  - curl
+  - zip
+  - unzip
 
 zsh_theme: aussiegeek
 user: root

@@ -49,3 +49,9 @@
   with_items:     "{{apache2_sites_disabled}}"
   notify:         apache2 restart
   when:           "{{apache2_sites_disabled}}"
+
+# - name:           file | create a symlink to projectfolder
+#   file:
+#     src:          /home/vagrant/share/repo
+#     dest:         /var/www/default/repo
+#     state:        link

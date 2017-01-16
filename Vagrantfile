@@ -1,22 +1,55 @@
-# File: Vagrantfile
+# -*- mode: ruby -*-
+# vim: ft=ruby
 
-Vagrant.configure("2") do |config|
-	config.vm.box = "debian/jessie64"
-	
-	config.vm.define "ILIAS" do |il|
-		il.vm.hostname = "ILIAS"
-		il.vm.network "forwarded_port", guest: 80, host: 8080
-		il.vm.synced_folder "/home/dw/share/ILIAS", "/home/vagrant/share", type: "sshfs", create: true
-	end
+# ---- Configuration Part -----
+NAME = "nh"
 
-	config.vm.define "GENERALI" do |ge|
-		ge.vm.hostname = "GENERALI"
-		ge.vm.network "forwarded_port", guest: 80, host: 8090
-		ge.vm.synced_folder "/home/dw/share/GENERALI", "/home/vagrant/share", type: "sshfs", create: true
-	end
 
-	config.vm.provision :ansible do |ansible|
-		ansible.playbook = "playbook.yml"
-		ansible.groups = { "webserver" => ["ILIAS", "GENERALI"],"ilias" => ["ILIAS"], "generali" => ["GENERALI"]}
-	end
+# get IP - addition per defined user 
+priv_ip = { "rk" => "0", 
+			"sh" => "2", 
+			"dawei" => "4", 
+			"dk" => "6", 
+			"nh" => "8"}
+
+nodes = %w[ GENERALI
+			SEEPEX
+			PANASONIC
+			InstILIAS
+			TESTILIAS
+		  ]
+
+server = Array.new() { Array.new() }
+nodes.each_with_index do |node, index|
+	server.push( :hostname => "#{node}", :ip => "192.168.6." + priv_ip[NAME] + "#{index+2}" )
+	puts "#{node} => #{index}"
 end
+
+puts server
+# define the virtuel machines
+# nodes = [
+# 	{ :hostname => 'GENERALI', :ip => '192.168.6' + priv_ip[NAME] + '2'}.
+# 	{ :hostname => 'SEEPEX', :ip => '192.168.6' + priv_ip[NAME] + '.3'},
+# 	{ :hostname => 'PANASONIC', :ip => '192.168.6' + priv_ip[NAME] + '4'},
+# 	{ :hostname => 'InstILIAS', :ip => '192.168.6' + priv_ip[NAME] + '5'}
+# ]
+
+
+# Vagrant.configure("2") do |config|
+# 	config.vm.box = "debian/jessie64"
+
+# 	# do for each virtual machine
+# 	nodes.each do |node|
+# 		config.vm.define node[:hostname] do |nodeconfig|
+# 			puts node[:ip]
+# 			nodeconfig.vm.hostname = node[:hostname]
+# 			nodeconfig.vm.network :private_network, ip: node[:ip]
+# 		end
+# 	end
+
+# 	config.vm.provision :ansible do |ansible|
+# 		ansible.playbook = "playbook.yml"
+# 		ansible.
+# 		ansible.groups = { "webserver" => ["GENERALI", "SEEPEX", "PANASONIC", "InstILIAS"], "generali" => ["GENERALI"] }
+# 	end
+# end

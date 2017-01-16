@@ -9,13 +9,14 @@
     - apache2
     - php5-fpm
     - mysql
-    - achaussier.phpmyadmin
+    - phpmyadmin
+    - composer
   
-- hosts: ilias
-  become: yes
-  become_method: sudo
-  roles:
-    - InstILIAS
+# - hosts: ilias
+#   become: yes
+#   become_method: sudo
+#   roles:
+#     - InstILIAS
 
 - hosts: generali
   become: yes
