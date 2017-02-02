@@ -4,6 +4,7 @@
 import yaml
 import sys
 import os
+import subprocess
 
 if not os.path.isfile("/usr/local/bin/vag"):
 	src 	= os.getcwd() + "/vag.py"
@@ -49,5 +50,7 @@ cmd 	= "vagrant " +  " ".join(args)
 # call vagrant with command args
 os.system(cmd)
 
-test = os.popen(vagrant ssh $1 -c "ip address show eth1" 2>/dev/null | sed -ne '/inet / s/\s\+inet \([^\/]\+\).*\r/\1/p')#
-print test
+
+ifconfig = subprocess.check_output(["vagrant", "ssh", "dw-seepex", "-c", "ip address show eth1"])
+ip = ifconfig.split('\n')[0]
+print ip
