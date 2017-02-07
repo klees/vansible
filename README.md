@@ -55,13 +55,13 @@ $ vag ssh [machinename]
 ````
 
 ### Mount a vm
-To access the folder structure of the virtual machines i suggest to use sshfs.
-You also can use the script in the repo to mount a vm by its name.
+To access the folder structure of the virtual machines you can use sshfs.
 
 ````
 $ sshfs root@<vm_ip_address>:/home/ <mount_dir_on_host>
 ````
-or use the script
+
+You also can use the script in the repo to mount a vm by its name.
 ````
 $ ./mountvm.sh <vm name>
 ````
