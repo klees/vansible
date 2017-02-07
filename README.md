@@ -60,7 +60,9 @@ You also can use the script in the repo to mount a vm by its name.
 
 ````
 $ sshfs root@<vm_ip_address>:/home/ <mount_dir_on_host>
-or
+````
+or use the script
+````
 $ ./mountvm.sh <vm name>
 ````
 
