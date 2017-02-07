@@ -53,10 +53,18 @@ To access to the console of the virtual machine you can use the following comman
 ````
 $ vag ssh [machinename]
 ````
+
+### Mount a vm
 To access the folder structure of the virtual machines i suggest to use sshfs.
+You also can use the script in the repo to mount a vm by its name.
+
 ````
 $ sshfs root@<vm_ip_address>:/home/ <mount_dir_on_host>
+or
+$ ./mountvm.sh <vm name>
 ````
+
+The script will create a folder in your home directory called mount. In the mount folder you will find a folder with your vm name. All files you store here will be saved on the vm.
 
 [//]: # (These are reference links used in the body of this note and get stripped out when the markdown processor does its job. There is no need to format nicely because it shouldn't be seen. Thanks SO - http://stackoverflow.com/questions/4823468/store-comments-in-markdown-syntax)
 
