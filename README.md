@@ -2,7 +2,7 @@
 # VANSIBLE
 **The aim of this project is to provide developers with a fast and uncomplicated development environment.**
 **For this, Vagrant and Ansible will be used in combination to provide various virtual machines with different software.**
-**The developers should be able to take all the settings via a central configuration file.**
+**The developers should be able to do all settings via a central configuration file.**
 
 ## Usage
 ### Software Requirements
