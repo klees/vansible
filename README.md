@@ -12,6 +12,7 @@
 * [VirtualBox]
 * [git]
 * [python2.7]
+* [pyyaml]
 
 ### Installation
 ```
@@ -75,3 +76,4 @@ The script will create a folder in your home directory called mount. In the moun
    [VirtualBox]: <https://www.virtualbox.org/>
    [git]: <https://git-scm.com/>
    [python2.7]: <https://www.python.org/downloads/release/python-2713/>
+   [pyyaml]: <http://pyyaml.org>
